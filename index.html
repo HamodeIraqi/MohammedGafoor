@@ -1185,9 +1185,139 @@
         padding: 24px 20px;
       }
 
-      .cv-footer {
-        flex-direction: column;
-        text-align: center;
+    /* Mode Switcher Tabs */
+    .view-tabs-container {
+      max-width: 1060px;
+      margin: 0 auto 16px auto;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .view-tab-btn {
+      background: var(--surface);
+      color: var(--slate);
+      border: 2px solid var(--border);
+      padding: 10px 22px;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .view-tab-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .view-tab-btn.active {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: #ffffff;
+      border-color: var(--accent-gold);
+      box-shadow: 0 4px 14px rgba(11, 31, 56, 0.25);
+    }
+
+    .view-tab-btn.active i {
+      color: var(--accent-gold-light);
+    }
+
+    /* Embedded PDF Section */
+    .pdf-viewer-section {
+      display: none;
+      padding: 24px 36px 36px 36px;
+      background: #f8fafc;
+    }
+
+    .pdf-viewer-section.active {
+      display: block;
+    }
+
+    .pdf-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pdf-toolbar .pdf-info {
+      font-size: 0.94rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pdf-toolbar .pdf-info i {
+      color: var(--secondary);
+    }
+
+    .pdf-embed-wrapper {
+      width: 100%;
+      height: 900px;
+      background: #525659;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--border);
+      position: relative;
+    }
+
+    .pdf-embed-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* PDF Highlight Banner in Web View */
+    .pdf-callout-banner {
+      background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%);
+      border: 1px solid #fef3c7;
+      border-right: 4px solid var(--accent-gold);
+      padding: 14px 20px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .pdf-callout-text {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #78350f;
+    }
+
+    .pdf-callout-text i {
+      color: var(--accent-gold);
+      font-size: 1.2rem;
+    }
+
+    @media print {
+      .view-tabs-container,
+      .pdf-viewer-section,
+      .pdf-callout-banner {
+        display: none !important;
       }
     }
   </style>
@@ -1207,10 +1337,28 @@
     </div>
     
     <div class="actions-group">
+      <!-- Direct PDF Preview Switcher -->
+      <button class="btn btn-primary" id="btnActionPdf" onclick="togglePdfView()" title="استعراض وثيقة الـ PDF مباشرة في واجهة الموقع" aria-label="استعراض وثيقة PDF">
+        <i class="fa-solid fa-file-pdf"></i>
+        <span id="btnActionPdfText">استعراض وثيقة PDF</span>
+      </button>
+
       <!-- QR Code Quick Button -->
       <button class="btn btn-gold" onclick="openQrModal()" title="عرض الباركود للوصول السريع عبر الهاتف" aria-label="عرض الباركود الرقمي">
         <i class="fa-solid fa-qrcode"></i>
         <span>الباركود الرقمي</span>
+      </button>
+
+      <!-- Direct PDF Download -->
+      <a href="Mohammed_Gafoor_CV.pdf" download="Mohammed_Gafoor_CV.pdf" class="btn btn-secondary" title="تحميل ملف PDF الرسمي مباشرة" aria-label="تحميل ملف PDF">
+        <i class="fa-solid fa-download"></i>
+        <span>تحميل PDF</span>
+      </a>
+
+      <!-- Download vCard -->
+      <button class="btn btn-secondary" onclick="downloadVCard()" title="حفظ بطاقة الاتصال الرسمية إلى الهاتف أو الحاسوب" aria-label="حفظ بطاقة الاتصال">
+        <i class="fa-solid fa-address-card"></i>
+        <span>بطاقة الاتصال</span>
       </button>
 
       <!-- Share Link -->
@@ -1219,18 +1367,6 @@
         <span>مشاركة</span>
       </button>
 
-      <!-- Download vCard -->
-      <button class="btn btn-secondary" onclick="downloadVCard()" title="حفظ بطاقة الاتصال الرسمية إلى الهاتف أو الحاسوب" aria-label="حفظ بطاقة الاتصال">
-        <i class="fa-solid fa-address-card"></i>
-        <span>بطاقة الاتصال vCard</span>
-      </button>
-
-      <!-- Direct PDF Download -->
-      <a href="Mohammed_Gafoor_CV.pdf" download="Mohammed_Gafoor_CV.pdf" class="btn btn-primary" title="تحميل ملف PDF الرسمي مباشرة" aria-label="تحميل ملف PDF">
-        <i class="fa-solid fa-file-pdf"></i>
-        <span>تحميل ملف PDF</span>
-      </a>
-
       <!-- Print Button -->
       <button class="btn btn-secondary" onclick="window.print()" title="طباعة أو تصدير كملف PDF مخصص" aria-label="طباعة السيرة الذاتية">
         <i class="fa-solid fa-print"></i>
@@ -1238,6 +1374,18 @@
       </button>
     </div>
   </aside>
+
+  <!-- View Mode Switcher Tabs -->
+  <nav class="view-tabs-container" aria-label="تبديل طريقة العرض">
+    <button class="view-tab-btn active" id="tabWebBtn" onclick="switchViewMode('web')">
+      <i class="fa-solid fa-address-card"></i>
+      <span>السيرة الذاتية التفاعلية (Web View)</span>
+    </button>
+    <button class="view-tab-btn" id="tabPdfBtn" onclick="switchViewMode('pdf')">
+      <i class="fa-solid fa-file-pdf"></i>
+      <span>استعراض وثيقة الـ PDF الرسمية المعتمدة</span>
+    </button>
+  </nav>
 
   <!-- Main CV Document -->
   <main class="cv-container" id="cvContent">
@@ -1308,11 +1456,32 @@
       قيادي تقني واستشاري أنظمة برمجية بخبرة تمتد لأكثر من 22 عاماً في القطاع الحكومي السيادي العراقي. أقود منذ عام 2022 قسم تقنية المعلومات في الأمانة العامة لمجلس الوزراء للإشراف على البنية الرقمية ومشاريع الأتمتة الوطنية الشاملة. أمتلك خبرة عميقة كـ Full-Stack Architect في هندسة وبناء النظم الضخمة وقواعد البيانات الحساسة، مع سجل حافل بإطلاق منصات استراتيجية رائدة كمنظومة البريد الحكومي وأجندة مجلس الوزراء، وتكللت مسيرتي بالعديد من كتب الشكر والتقدير الرفيعة من ثلاثة رؤساء وزراء عراقيين متعاقبين.
     </section>
 
-    <!-- Main Body Grid -->
-    <div class="cv-body">
+    <!-- Main Body Grid (Web View) -->
+    <div class="cv-body" id="webBodyView">
 
       <!-- Right Column: Timeline, Projects, Prime Minister Appreciations -->
       <div class="main-column">
+
+        <!-- PDF Callout Banner -->
+        <div class="pdf-callout-banner">
+          <div class="pdf-callout-text">
+            <i class="fa-solid fa-file-pdf"></i>
+            <div>
+              <div>وثيقة السيرة الذاتية الرسمية (PDF) المعتمدة متوفرة للاطلاع المباشر</div>
+              <div style="font-size: 0.8rem; font-weight: 500; color: #92400e;">مرفقة بالصورة الرسمية والباركود الرقمي وكتب الشكر الوزارية</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="btn btn-primary" onclick="switchViewMode('pdf')">
+              <i class="fa-solid fa-eye"></i>
+              <span>استعراض الوثيقة الآن</span>
+            </button>
+            <a href="Mohammed_Gafoor_CV.pdf" download="Mohammed_Gafoor_CV.pdf" class="btn btn-secondary">
+              <i class="fa-solid fa-download"></i>
+              <span>تحميل</span>
+            </a>
+          </div>
+        </div>
 
         <!-- Career Timeline -->
         <section aria-label="المسار الوظيفي والخبرات المهنية">
@@ -1618,6 +1787,49 @@
 
     </div>
 
+    <!-- Embedded Official PDF Document View -->
+    <section id="pdfBodyView" class="pdf-viewer-section" aria-label="استعراض وثيقة PDF الرسمية">
+      <!-- Toolbar -->
+      <div class="pdf-toolbar">
+        <div class="pdf-info">
+          <i class="fa-solid fa-file-shield fa-lg"></i>
+          <div>
+            <span>الوثيقة التنفيذية المعتمدة | السيد محمد عبد الغفور كريم علي</span>
+            <span style="font-size: 0.78rem; color: var(--muted); font-weight: normal; margin-right: 6px;">(مرفقة بالصورة الشخصية الرسمية والباركود الرقمي QR)</span>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <a href="Mohammed_Gafoor_CV.pdf" target="_blank" rel="noopener" class="btn btn-secondary" title="فتح الوثيقة في نافذة جديدة مستقلة">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <span>ملء الشاشة</span>
+          </a>
+          <a href="Mohammed_Gafoor_CV.pdf" download="Mohammed_Gafoor_CV.pdf" class="btn btn-primary" title="تحميل ملف PDF إلى جهازك">
+            <i class="fa-solid fa-download"></i>
+            <span>تحميل وثيقة PDF</span>
+          </a>
+          <button class="btn btn-secondary" onclick="switchViewMode('web')" title="العودة لعرض صفحة الويب">
+            <i class="fa-solid fa-table-columns"></i>
+            <span>العودة للعرض التفاعلي</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Embedded Object / Iframe -->
+      <div class="pdf-embed-wrapper">
+        <iframe src="Mohammed_Gafoor_CV.pdf#toolbar=1&navpanes=0&scrollbar=1" title="معاينة وثيقة السيرة الذاتية التنفيذية PDF">
+          <div style="padding: 40px 20px; text-align: center; color: #ffffff;">
+            <i class="fa-solid fa-file-pdf fa-3x" style="color: var(--accent-gold); margin-bottom: 12px;"></i>
+            <p style="font-size: 1.1rem; font-weight: 700;">وثيقة السيرة الذاتية التنفيذية الرسمية (PDF)</p>
+            <p style="margin: 12px 0; color: #cbd5e1;">متصفحك لا يدعم استعراض ملفات PDF مباشرة داخل الإطار.</p>
+            <a href="Mohammed_Gafoor_CV.pdf" download class="btn btn-primary">
+              <i class="fa-solid fa-download"></i>
+              <span>تحميل وقراءة ملف PDF مباشرة</span>
+            </a>
+          </div>
+        </iframe>
+      </div>
+    </section>
+
     <!-- CV Footer -->
     <footer class="cv-footer">
       <div>
@@ -1682,6 +1894,41 @@
 
   <script>
     const LIVE_URL = "https://hamodeiraqi.github.io/MohammedGafoor/";
+
+    // Switch View Mode: 'web' or 'pdf'
+    function switchViewMode(mode) {
+      const webView = document.getElementById('webBodyView');
+      const pdfView = document.getElementById('pdfBodyView');
+      const tabWebBtn = document.getElementById('tabWebBtn');
+      const tabPdfBtn = document.getElementById('tabPdfBtn');
+      const btnActionPdfText = document.getElementById('btnActionPdfText');
+
+      if (!webView || !pdfView) return;
+
+      if (mode === 'pdf') {
+        webView.style.display = 'none';
+        pdfView.style.display = 'block';
+        if (tabWebBtn) tabWebBtn.classList.remove('active');
+        if (tabPdfBtn) tabPdfBtn.classList.add('active');
+        if (btnActionPdfText) btnActionPdfText.textContent = 'عرض صفحة الويب';
+        pdfView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        webView.style.display = 'grid';
+        pdfView.style.display = 'none';
+        if (tabWebBtn) tabWebBtn.classList.add('active');
+        if (tabPdfBtn) tabPdfBtn.classList.remove('active');
+        if (btnActionPdfText) btnActionPdfText.textContent = 'استعراض وثيقة PDF';
+      }
+    }
+
+    function togglePdfView() {
+      const pdfView = document.getElementById('pdfBodyView');
+      if (pdfView && pdfView.style.display === 'block') {
+        switchViewMode('web');
+      } else {
+        switchViewMode('pdf');
+      }
+    }
 
     // Toast Notification helper
     function showToast(text) {
