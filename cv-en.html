@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Executive CV | Mr. Mohammed Abdul Ghafoor Kareem Ali Al-Sheikhli</title>
+  <title>Executive CV (English) | Mr. Mohammed Abdul Ghafoor Kareem Ali Al-Sheikhli</title>
   <meta name="description" content="Executive CV of Mr. Mohammed Abdul Ghafoor Kareem Ali Al-Sheikhli - Director of IT Department, General Secretariat of the Council of Ministers, Republic of Iraq.">
   <meta name="keywords" content="Mohammed Abdul Ghafoor, General Secretariat of the Council of Ministers, Information Technology, Iraq, CV, e-Government">
   <meta name="author" content="Mohammed Abdul Ghafoor Kareem Ali Al-Sheikhli">
@@ -61,6 +61,25 @@
     .btn-secondary:hover { background: #f1f5f9; border-color: var(--primary); transform: translateY(-1px); }
     .btn-arabic { background: linear-gradient(135deg, #78350f 0%, #92400e 100%); color: #ffffff; box-shadow: 0 4px 12px rgba(120,53,15,0.25); }
     .btn-arabic:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(120,53,15,0.35); }
+    .btn-gold { background: linear-gradient(135deg, #c59b27 0%, #b3881b 100%); color: #ffffff; box-shadow: 0 4px 12px rgba(197,155,39,0.25); }
+    .btn-gold:hover { background: linear-gradient(135deg, #b3881b 0%, #946f14 100%); transform: translateY(-2px); }
+    /* View Tabs */
+    .view-tabs-container { max-width: 1060px; margin: 0 auto 16px auto; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .view-tab-btn { background: var(--surface); color: var(--slate); border: 2px solid var(--border); padding: 10px 22px; border-radius: var(--radius-md); font-size: 0.95rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: all 0.2s cubic-bezier(0.4,0,0.2,1); box-shadow: var(--shadow-sm); text-decoration: none; font-family: 'Inter', system-ui, sans-serif; }
+    .view-tab-btn:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-1px); }
+    .view-tab-btn.active { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: #ffffff; border-color: var(--accent-gold); box-shadow: 0 4px 14px rgba(11,31,56,0.25); }
+    .view-tab-btn.active i { color: var(--accent-gold-light); }
+    /* PDF Viewer Section */
+    .pdf-viewer-section { display: none; padding: 24px 36px 36px 36px; background: #f8fafc; }
+    .pdf-viewer-section.active { display: block; }
+    .pdf-toolbar { display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 12px 20px; border-radius: var(--radius-md); border: 1px solid var(--border); margin-bottom: 16px; flex-wrap: wrap; gap: 10px; box-shadow: var(--shadow-sm); }
+    .pdf-toolbar .pdf-info { font-size: 0.94rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+    .pdf-toolbar .pdf-info i { color: var(--secondary); }
+    .pdf-embed-wrapper { width: 100%; height: 900px; background: #525659; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-md); border: 2px solid var(--border); position: relative; }
+    .pdf-embed-wrapper iframe { width: 100%; height: 100%; border: none; display: block; }
+    .pdf-callout-banner { background: linear-gradient(135deg, #fffbeb 0%, #ffffff 100%); border: 1px solid #fef3c7; border-left: 4px solid var(--accent-gold); padding: 14px 20px; border-radius: var(--radius-sm); margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .pdf-callout-text { display: flex; align-items: center; gap: 10px; font-size: 0.92rem; font-weight: 700; color: #78350f; }
+    .pdf-callout-text i { color: var(--accent-gold); font-size: 1.2rem; }
     .cv-container { max-width: 1060px; margin: 0 auto; background: var(--surface); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid rgba(226,232,240,0.8); }
     .top-ribbon { height: 6px; background: linear-gradient(90deg, #0b1f38 0%, #c59b27 50%, #85142b 100%); width: 100%; }
     .cv-header { background: linear-gradient(135deg, #050d18 0%, #0b1f38 60%, #132e52 100%); color: #ffffff; padding: 40px 48px; position: relative; overflow: hidden; }
@@ -152,7 +171,7 @@
       @page { size: A4 portrait; margin: 8mm 10mm; }
       *, *::before, *::after { box-shadow: none !important; text-shadow: none !important; }
       body { background: #ffffff !important; color: #0f172a !important; padding: 0 !important; margin: 0 !important; font-size: 11pt !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-      .action-bar, .toast-msg { display: none !important; }
+      .action-bar, .toast-msg, .view-tabs-container, .pdf-viewer-section, .pdf-callout-banner { display: none !important; }
       .cv-container { border: none !important; box-shadow: none !important; max-width: 100% !important; width: 100% !important; margin: 0 !important; padding: 0 !important; border-radius: 0 !important; }
       .cv-header { padding: 16px 20px !important; background: #0b1f38 !important; color: #ffffff !important; border-bottom: 3px solid #c59b27 !important; }
       .header-content { gap: 20px !important; }
@@ -207,7 +226,11 @@
         <i class="fa-solid fa-language"></i>
         <span>&#x627;&#x644;&#x646;&#x633;&#x62E;&#x629; &#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
       </a>
-      <a href="Mohammed_Gafoor_CV.pdf" download="Mohammed_Gafoor_CV.pdf" class="btn btn-primary" title="Download official PDF">
+      <button class="btn btn-gold" id="btnActionPdf" onclick="togglePdfView()" title="View the official English PDF document">
+        <i class="fa-solid fa-file-pdf"></i>
+        <span id="btnActionPdfText">View English PDF</span>
+      </button>
+      <a href="Mohammed_Gafoor_CV_EN.pdf" download="Mohammed_Gafoor_CV_EN.pdf" class="btn btn-primary" title="Download English PDF">
         <i class="fa-solid fa-download"></i>
         <span>Download PDF</span>
       </a>
@@ -221,6 +244,22 @@
       </button>
     </div>
   </aside>
+
+  <!-- View Mode Tabs -->
+  <nav class="view-tabs-container" aria-label="Switch view mode">
+    <button class="view-tab-btn active" id="tabWebBtn" onclick="switchViewMode('web')">
+      <i class="fa-solid fa-address-card"></i>
+      <span>Interactive CV (Web View)</span>
+    </button>
+    <button class="view-tab-btn" id="tabPdfBtn" onclick="switchViewMode('pdf')">
+      <i class="fa-solid fa-file-pdf"></i>
+      <span>View Official English PDF</span>
+    </button>
+    <a href="index.html" class="view-tab-btn" style="text-decoration:none;" title="Arabic version">
+      <i class="fa-solid fa-language"></i>
+      <span>&#x627;&#x644;&#x646;&#x633;&#x62E;&#x629; &#x627;&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629;</span>
+    </a>
+  </nav>
 
   <!-- Main CV Document -->
   <main class="cv-container" id="cvContent">
@@ -508,6 +547,47 @@
 
   </main>
 
+  <!-- Embedded English PDF Viewer -->
+  <section id="pdfBodyView" class="pdf-viewer-section" aria-label="Official English PDF Document">
+    <div class="pdf-toolbar">
+      <div class="pdf-info">
+        <i class="fa-solid fa-file-shield fa-lg"></i>
+        <div>
+          <span>Official Executive CV (English) &ndash; Mr. Mohammed Abdul Ghafoor Al-Sheikhli</span>
+          <span style="font-size:0.78rem;color:var(--muted);font-weight:normal;margin-left:6px;">(Includes official photo &amp; QR code)</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a href="Mohammed_Gafoor_CV_EN.pdf" target="_blank" rel="noopener" class="btn btn-secondary" title="Open in new window">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <span>Full Screen</span>
+        </a>
+        <a href="Mohammed_Gafoor_CV_EN.pdf" download="Mohammed_Gafoor_CV_EN.pdf" class="btn btn-primary" title="Download English PDF">
+          <i class="fa-solid fa-download"></i>
+          <span>Download English PDF</span>
+        </a>
+        <button class="btn btn-secondary" onclick="switchViewMode('web')" title="Back to web view">
+          <i class="fa-solid fa-table-columns"></i>
+          <span>Back to Interactive CV</span>
+        </button>
+      </div>
+    </div>
+    <div class="pdf-embed-wrapper">
+      <iframe src="Mohammed_Gafoor_CV_EN.pdf#toolbar=1&navpanes=0&scrollbar=1"
+        title="Official English Executive CV PDF Preview">
+        <div style="padding:40px 20px;text-align:center;color:#ffffff;">
+          <i class="fa-solid fa-file-pdf fa-3x" style="color:#c59b27;margin-bottom:12px;"></i>
+          <p style="font-size:1.1rem;font-weight:700;">Official Executive CV (English) PDF</p>
+          <p style="margin:12px 0;color:#cbd5e1;">Your browser does not support inline PDF viewing.</p>
+          <a href="Mohammed_Gafoor_CV_EN.pdf" download class="btn btn-primary">
+            <i class="fa-solid fa-download"></i>
+            <span>Download &amp; Read PDF</span>
+          </a>
+        </div>
+      </iframe>
+    </div>
+  </section>
+
   <!-- Toast -->
   <div class="toast-msg" id="toastMsg" role="status" aria-live="polite">
     <i class="fa-solid fa-circle-check" style="color:#4ade80;"></i>
@@ -516,6 +596,39 @@
 
   <script>
     const LIVE_URL = "https://hamodeiraqi.github.io/MohammedGafoor/";
+
+    // Switch View Mode: 'web' or 'pdf'
+    function switchViewMode(mode) {
+      const webView = document.getElementById('cvContent');
+      const pdfView = document.getElementById('pdfBodyView');
+      const tabWebBtn = document.getElementById('tabWebBtn');
+      const tabPdfBtn = document.getElementById('tabPdfBtn');
+      const btnActionPdfText = document.getElementById('btnActionPdfText');
+      if (!webView || !pdfView) return;
+      if (mode === 'pdf') {
+        webView.style.display = 'none';
+        pdfView.style.display = 'block';
+        if (tabWebBtn) tabWebBtn.classList.remove('active');
+        if (tabPdfBtn) tabPdfBtn.classList.add('active');
+        if (btnActionPdfText) btnActionPdfText.textContent = 'Back to Web View';
+        pdfView.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        webView.style.display = '';
+        pdfView.style.display = 'none';
+        if (tabWebBtn) tabWebBtn.classList.add('active');
+        if (tabPdfBtn) tabPdfBtn.classList.remove('active');
+        if (btnActionPdfText) btnActionPdfText.textContent = 'View English PDF';
+      }
+    }
+
+    function togglePdfView() {
+      const pdfView = document.getElementById('pdfBodyView');
+      if (pdfView && pdfView.style.display === 'block') {
+        switchViewMode('web');
+      } else {
+        switchViewMode('pdf');
+      }
+    }
 
     function showToast(text) {
       const toast = document.getElementById('toastMsg');
